@@ -53,7 +53,7 @@
  *     such as how many total items were processed.
  */
 function callback_batch_operation($MULTIPLE_PARAMS, &$context) {
-  $node_storage = $this->container->get('entity.manager')->getStorage('node');
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
   if (!isset($context['sandbox']['progress'])) {
     $context['sandbox']['progress'] = 0;
@@ -146,8 +146,6 @@ function callback_batch_finished($success, $results, $operations) {
  *
  * @param \Drupal\Core\Ajax\CommandInterface[] $data
  *   An array of all the rendered commands that will be sent to the client.
- *
- * @see \Drupal\Core\Ajax\AjaxResponse::ajaxRender()
  */
 function hook_ajax_render_alter(array &$data) {
   // Inject any new status messages into the content area.

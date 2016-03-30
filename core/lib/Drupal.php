@@ -63,8 +63,8 @@ use Drupal\Core\Url;
  *   class StuffDoingClass implements StuffDoingInterface {
  *     protected $lockBackend;
  *
- *     public function __construct(LockBackendInterface $lockBackend) {
- *       $this->lockBackend = $lockBackend;
+ *     public function __construct(LockBackendInterface $lock_backend) {
+ *       $this->lockBackend = $lock_backend;
  *     }
  *
  *     public function doStuff() {
@@ -81,7 +81,7 @@ class Drupal {
   /**
    * The current system version.
    */
-  const VERSION = '8.0.0-dev';
+  const VERSION = '8.0.5';
 
   /**
    * Core API compatibility.

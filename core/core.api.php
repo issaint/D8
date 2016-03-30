@@ -344,7 +344,7 @@
  *   Configuration entity classes expose dependencies by overriding the
  *   \Drupal\Core\Config\Entity\ConfigEntityInterface::calculateDependencies()
  *   method.
- * - On routes for paths staring with '/admin' or otherwise designated as
+ * - On routes for paths starting with '/admin' or otherwise designated as
  *   administration paths (such as node editing when it is set as an admin
  *   operation), if they have configuration entity placeholders, configuration
  *   entities are normally loaded in their original language, without
@@ -567,7 +567,7 @@
  *
  * By default cached data is stored in the database. This can be configured
  * though so that all cached data, or that of an individual cache bin, uses a
- * different cache backend, such as APC or Memcache, for storage.
+ * different cache backend, such as APCu or Memcache, for storage.
  *
  * In a settings.php file, you can override the service used for a particular
  * cache bin. For example, if your service implementation of
@@ -1045,8 +1045,8 @@
  * - The class name needs to end in the word Test.
  * - The namespace must be a subspace/subdirectory of \Drupal\yourmodule\Tests,
  *   where yourmodule is your module's machine name.
- * - The test class file must be named and placed under the yourmodule/tests/src
- *   directory, according to the PSR-4 standard.
+ * - The test class file must be named and placed under the
+ *   yourmodule/tests/src/Unit directory, according to the PSR-4 standard.
  * - Your test class needs a phpDoc comment block with a description and
  *   a @group annotation, which gives information about the test.
  * - Methods in your test class whose names start with 'test' are the actual
@@ -1071,7 +1071,7 @@
  *   $modules member variable -- keep in mind that by default, WebTestBase uses
  *   a "testing" install profile, with a minimal set of modules enabled.
  * - For functional tests that do not test web output, define a class that
- *   extends \Drupal\simpletest\KernelTestBase. This class is much faster
+ *   extends \Drupal\KernelTests\KernelTestBase. This class is much faster
  *   than WebTestBase, because instead of making a full install of Drupal, it
  *   uses an in-memory pseudo-installation (similar to what the installer and
  *   update scripts use). To use this test class, you will need to create the

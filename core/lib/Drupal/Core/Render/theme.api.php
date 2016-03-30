@@ -37,16 +37,16 @@
  * http://twig.sensiolabs.org/doc/templates.html
  *
  * @section sec_theme_hooks Theme Hooks
- * The theme system is invoked in drupal_render() by calling the internal
- * _theme() function, which operates on the concept of "theme hooks". Theme
- * hooks define how a particular type of data should be rendered. They are
- * registered by modules by implementing hook_theme(), which specifies the name
- * of the hook, the input "variables" used to provide data and options, and
- * other information. Modules implementing hook_theme() also need to provide a
- * default implementation for each of their theme hooks, normally in a Twig
- * file, and they may also provide preprocessing functions. For example, the
- * core Search module defines a theme hook for a search result item in
- * search_theme():
+ * The theme system is invoked in \Drupal\Core\Render\Renderer::doRender() by
+ * calling the \Drupal\Core\Theme\ThemeManagerInterface::render() function,
+ * which operates on the concept of "theme hooks". Theme hooks define how a
+ * particular type of data should be rendered. They are registered by modules by
+ * implementing hook_theme(), which specifies the name of the hook, the input
+ * "variables" used to provide data and options, and other information. Modules
+ * implementing hook_theme() also need to provide a default implementation for
+ * each of their theme hooks, normally in a Twig file, and they may also provide
+ * preprocessing functions. For example, the core Search module defines a theme
+ * hook for a search result item in search_theme():
  * @code
  * return array(
  *   'search_result' => array(
@@ -366,7 +366,7 @@
  * @code
  *   '#cache' => [
  *     'keys' => ['entity_view', 'node', $node->id()],
- *     'contexts' => ['language'],
+ *     'contexts' => ['languages'],
  *     'tags' => ['node:' . $node->id()],
  *     'max-age' => Cache::PERMANENT,
  *   ],
@@ -429,9 +429,10 @@
  *
  * @section render_pipeline The render pipeline
  * The term "render pipeline" refers to the process Drupal uses to take
- * information provided by modules and render it into a response. For more
- * details on this process, see https://www.drupal.org/developing/api/8/render;
- * for background on routing concepts, see @ref sec_controller.
+ * information provided by modules and render it into a response. See
+ * https://www.drupal.org/developing/api/8/render for more details on this
+ * process. For background on routing concepts, see
+ * @link routing Routing API. @endlink
  *
  * There are in fact multiple render pipelines:
  * - Drupal always uses the Symfony render pipeline. See
@@ -542,7 +543,8 @@ function hook_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormSta
  * preprocess variables for a specific theme hook, whether implemented as a
  * template or function.
  *
- * For more detailed information, see _theme().
+ * For more detailed information, see the
+ * @link themeable Theme system overview topic @endlink.
  *
  * @param $variables
  *   The variables array (modify in place).
@@ -590,7 +592,8 @@ function hook_preprocess(&$variables, $hook) {
  * hook. It should only be used if a module needs to override or add to the
  * theme preprocessing for a theme hook it didn't define.
  *
- * For more detailed information, see _theme().
+ * For more detailed information, see the
+ * @link themeable Theme system overview topic @endlink.
  *
  * @param $variables
  *   The variables array (modify in place).
